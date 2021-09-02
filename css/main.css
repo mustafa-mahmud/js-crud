@@ -1,1 +1,69 @@
-/* No CSS */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.msg {
+  height: 20px;
+}
+
+input {
+  height: 40px;
+}
+
+input::-webkit-input-placeholder {
+  color: #3498DB !important;
+  font-style: italic;
+}
+
+input:-ms-input-placeholder {
+  color: #3498DB !important;
+  font-style: italic;
+}
+
+input::-ms-input-placeholder {
+  color: #3498DB !important;
+  font-style: italic;
+}
+
+input::placeholder {
+  color: #3498DB !important;
+  font-style: italic;
+}
+
+.todo {
+  margin-bottom: 5px;
+}
+
+.todo img {
+  cursor: pointer;
+}
+
+.todo img:hover {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.todo .edit {
+  width: 30px;
+  height: 26px;
+  margin: 0 5px;
+}
+
+.todo .delete {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.todo .serial {
+  padding-right: 10px;
+  padding: 8px;
+  font-size: 25px;
+  line-height: 20px;
+}
+
+.todo .info {
+  margin-right: auto;
+  margin-left: 10px;
+}
