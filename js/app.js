@@ -57,9 +57,29 @@ export function del(e) {
   const index = data.findIndex((val) => val.id === id);
   data.splice(index, 1);
 
-  speak('deleted successfully');
-  message('green', 'Deleted Successfully', 3);
-  display();
+  speak('Are you sure to delete');
+  const conf = confirm('Are you sure to delete?');
+
+  if (conf) {
+    speak('deleted successfully');
+    message('green', 'Deleted Successfully', 3);
+    display();
+  }
+}
+
+export function done(e) {
+  const target = e.target.closest('.todo');
+  const info = target.querySelector('.info').textContent;
+
+  target.classList.toggle('done');
+
+  if (target.classList.contains('done')) {
+    speak('done ' + info);
+    message('green', 'Done Successfully', 3);
+  } else {
+    speak('re arrange ' + info);
+    message('green', 'Re-arrange Successfully', 3);
+  }
 }
 
 ////////////////

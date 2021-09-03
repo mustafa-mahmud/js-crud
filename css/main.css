@@ -33,6 +33,10 @@ input::placeholder {
 
 .todo {
   margin-bottom: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .todo img {
@@ -47,13 +51,17 @@ input::placeholder {
 .todo .edit {
   width: 30px;
   height: 26px;
-  margin: 0 5px;
+  margin: 0 2px;
 }
 
 .todo .delete {
   width: 30px;
   height: 30px;
-  margin: 0 5px;
+  margin: 0 2px;
+}
+
+.todo .img-done {
+  display: none;
 }
 
 .todo .serial {
@@ -66,4 +74,15 @@ input::placeholder {
 .todo .info {
   margin-right: auto;
   margin-left: 10px;
+}
+
+.todo.done {
+  opacity: 0.3;
+}
+
+.todo.done .img-done {
+  width: 30px;
+  height: 30px;
+  margin: 0 2px;
+  display: block;
 }

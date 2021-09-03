@@ -19,6 +19,7 @@ input {
 
 .todo {
 	margin-bottom: 5px;
+	user-select: none;
 
 	img {
 		cursor: pointer;
@@ -31,13 +32,17 @@ input {
 	.edit {
 		width: 30px;
 		height: 26px;
-		margin: 0 5px;
+		margin: 0 2px;
 	}
 
 	.delete {
 		width: 30px;
 		height: 30px;
-		margin: 0 5px;
+		margin: 0 2px;
+	}
+
+	.img-done {
+		display: none;
 	}
 
 	.serial {
@@ -50,5 +55,18 @@ input {
 	.info {
 		margin-right: auto;
 		margin-left: 10px;
+	}
+
+
+}
+
+.todo.done {
+	opacity: 0.3;
+
+	.img-done {
+		width: 30px;
+		height: 30px;
+		margin: 0 2px;
+		display: block;
 	}
 }
