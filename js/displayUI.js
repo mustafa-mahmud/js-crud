@@ -10,9 +10,9 @@ function displayUI() {
   const html = datas
     .map(
       (data, ind) => `
-	<div data-id="${
-    data.id
-  }" class="todo d-flex align-items-center justify-content-between bg-info">
+	<div data-id="${data.id}" class="${
+        data.done ? 'done' : ''
+      } todo d-flex align-items-center justify-content-between bg-info">
 		<span class="serial bg-black">${(ind < 10 ? 0 + ind : ind) + 1}</span>
 		<span class="info">${data.info}</span>
 			<img class="img-done" src="img/done.svg" />
