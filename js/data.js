@@ -1,3 +1,3 @@
-const userData = [];
+let userData = [];
 
 export default userData;

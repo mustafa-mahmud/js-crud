@@ -1,4 +1,5 @@
 import datas from './data.js';
+import { getId, edit, del } from './app.js';
 
 const todoContainer = document.querySelector('.todo-container');
 const addInfoInput = document.querySelector('.add-info');
@@ -7,7 +8,6 @@ function displayUI() {
   todoContainer.innerHTML = '';
 
   const html = datas
-    .reverse()
     .map(
       (data, ind) => `
 	<div data-id="${
@@ -22,7 +22,20 @@ function displayUI() {
     )
     .join('');
 
-  todoContainer.insertAdjacentHTML('beforeend', html);
+  todoContainer.insertAdjacentHTML('afterbegin', html);
+  todoContainer.querySelectorAll('.edit').forEach((el) =>
+    el.addEventListener('click', (e) => {
+      getId(e);
+      edit(e);
+    })
+  );
+  todoContainer.querySelectorAll('.delete').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      getId(e);
+      del(e);
+    });
+  });
+
   addInfoInput.value = '';
 }
 

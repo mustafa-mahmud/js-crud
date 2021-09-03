@@ -7,6 +7,7 @@ import display from './displayUI.js';
 import { firstLetterUpperCase as capitalize } from './firstLetterUpperCase.js';
 
 const addInfoInput = document.querySelector('.add-info');
+let id = 0;
 
 function getUserInput(e) {
   if (e.key === 'Enter') {
@@ -19,14 +20,46 @@ function inputValidation() {
   const pattern = /^[a-zA-Z0-9\s]+$/g;
 
   if (pattern.test(value)) {
-    data.push({ info: capitalize(value), id: new Date().getTime() });
-    speak('added ' + value);
-    message('green', 'Added Successfully');
-    display();
+    if (!addInfoInput.classList.contains('edit')) {
+      data.unshift({ info: capitalize(value), id: new Date().getTime() });
+      speak('add ' + value);
+      message('green', 'Added Successfully', 3);
+      display();
+    }
+
+    if (addInfoInput.classList.contains('edit')) {
+      const index = data.findIndex((val) => val.id === id);
+      data.splice(index, 1, { info: capitalize(value), id: id });
+
+      speak('edit ' + value);
+      message('green', 'Edited Successfully', 3);
+      display();
+      addInfoInput.classList.remove('edit');
+    }
   } else {
     speak('Please give some values into input field');
-    message('red', 'Please give some values into input field');
+    message('red', 'Please give some values into input field', 3);
   }
+}
+
+export function getId(e) {
+  const target = e.target.closest('.todo');
+  id = +target.getAttribute('data-id');
+}
+
+export function edit(e) {
+  const info = e.target.closest('.todo').querySelector('.info').textContent;
+  addInfoInput.value = info;
+  addInfoInput.classList.add('edit');
+}
+
+export function del(e) {
+  const index = data.findIndex((val) => val.id === id);
+  data.splice(index, 1);
+
+  speak('deleted successfully');
+  message('green', 'Deleted Successfully', 3);
+  display();
 }
 
 ////////////////
